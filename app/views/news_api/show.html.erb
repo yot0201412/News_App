@@ -1,0 +1,24 @@
+<h1>News App</h1>
+
+<%= form_tag(news_api_path , method: "post") do %>
+    <%= label_tag(:cont, "Search for:Contry") %>
+    <%= select_tag :cont, options_for_select([["日本", "jp"], ["アメリカ", "us"]]) %>
+    <%= label_tag(:category, "category") %>
+    <%= select_tag :category, 
+        options_for_select([["ビジネス", "business"],
+                            ["エンタメ", "entertainment"], 
+                            ["一般", "general"], 
+                            ["健康", "health"], 
+                            ["科学", "science"],
+                            ["スポーツ", "sports"],
+                            ["IT", "technology"]]) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+<% if !@articles.nil? %>
+    <ul>
+        <% @articles.each do |a| %>
+            <li><h4><%= link_to a['title'] ,a['url'] %></h4></li>
+        <% end %>
+    </ul>
+<% end %>
