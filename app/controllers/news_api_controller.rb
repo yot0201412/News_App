@@ -8,12 +8,20 @@ class NewsApiController < ApplicationController
         @category = params[:category]
         apikey = "c7f25b6f8a5146de81ec700487186d7b"
         
-        if @cont != nil
+        if @cont != nil && @category != nil
             @url = "https://newsapi.org/v2/top-headlines?country=" + @cont + "&category=" + @category + "&apiKey="  + apikey
             
             # JSON形式をハッシュ形式にパース
             @result = JSON.parse(apipost(@url));
             @articles = @result['articles']
+        end
+    end
+    
+    def index
+        @title = params[:title]
+        respond_to do |format|
+            format.html
+            format.js
         end
     end
     

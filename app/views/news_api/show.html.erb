@@ -1,6 +1,6 @@
 <h1>News App</h1>
 
-<%= form_tag(news_api_path , method: "post") do %>
+<%= form_tag(news_api_path , method: "post",:remote => true) do %>
     <%= label_tag(:cont, "Search for:Contry") %>
     <%= select_tag :cont, options_for_select([["日本", "jp"], ["アメリカ", "us"]]) %>
     <%= label_tag(:category, "category") %>
@@ -14,14 +14,4 @@
                             ["IT", "technology"]]) %>
     <%= submit_tag("Search") %>
 <% end %>
-
-<% if !@articles.nil? %>
-    <ol>
-        <% @articles.each do |a| %>
-            <li>
-                <h4><%= link_to a['title'] ,a['url'] %></h4>
-                <h6><%=  a['description']  %></h6>
-            </li>
-        <% end %>
-    </ol>
-<% end %>
+<div id='airticles'></div>

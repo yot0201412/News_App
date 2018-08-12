@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'news_api#show'
   post  'news_api' => 'news_api#show'
   get  'news_api' => 'news_api#show'
+  get  'example' => 'news_api#index'
+  post  'example' => 'news_api#index'
 end

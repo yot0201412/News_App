@@ -1,0 +1,10 @@
+<% if !@articles.nil? %>
+    <ol>
+        <% @articles.each do |a| %>
+            <li>
+                <h4><%= link_to a['title'] ,a['url'] %></h4>
+                <h6><%=  a['description']  %></h6>
+            </li>
+        <% end %>
+    </ol>
+<% end %>
